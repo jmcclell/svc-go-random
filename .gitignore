@@ -1,0 +1,4 @@
+config.env
+deploy.env
+random
+gin-bin
