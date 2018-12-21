@@ -2,3 +2,5 @@ config.env
 deploy.env
 random
 gin-bin
+forge.yaml
+.forge/

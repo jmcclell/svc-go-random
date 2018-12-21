@@ -20,6 +20,12 @@ run-test:
 
 dev: build-dev run-dev
 
+forge-build:
+	forge build
+
+forge-deploy:
+	forge deploy
+
 build-dev:
 	docker build -t $(APP_NAME)-dev -f docker/Dockerfile-dev .
 
