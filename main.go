@@ -40,7 +40,7 @@ func main() {
 	initAdminServer()
 
 	router := http.NewServeMux()
-	router.HandleFunc("/", randomNumberHandler)
+	router.HandleFunc("/next", randomNumberHandler)
 
 	server := &http.Server{
 		Handler: router,
