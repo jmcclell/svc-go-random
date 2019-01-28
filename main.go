@@ -124,7 +124,7 @@ func randomNumberHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	params := RandomRequest{Min: 0, Max: 100}
+	params := RandomRequest{Min: 0, Max: 100, Num: 1}
 
 	err = paramDecoder.Decode(&params, r.Form)
 	if err != nil {
@@ -137,18 +137,26 @@ func randomNumberHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	val := rand.Intn(params.Max-params.Min) + params.Min
+	if params.Num < 1 || params.Num > 100 {
+		ErrorResponse{Error: "num must be between 1 and 100"}.render(w, http.StatusBadRequest)
+	}
 
-	NumberResponse{Value: int64(val)}.render(w)
+	nums := make([]int64, params.Num)
+	for i := 0; i < params.Num; i++ {
+		nums[i] = int64(rand.Intn(params.Max-params.Min) + params.Min)
+	}
+
+	NumberResponse{Values: nums}.render(w)
 }
 
 type RandomRequest struct {
 	Min int `schema:"min"`
 	Max int `schema:"max"`
+	Num int `schema:"num"`
 }
 
 type NumberResponse struct {
-	Value int64 `json:"value"`
+	Values []int64 `json:"values"`
 }
 
 func (v NumberResponse) render(w http.ResponseWriter) {
