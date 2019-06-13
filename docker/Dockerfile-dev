@@ -16,11 +16,6 @@ ADD main_test.go ./
 
 RUN go get
 
-# App Environment Config
-ENV REDIS_URL localhost:6379
-ENV REDIS_PW ""
-ENV REDIS_DB 0
-
 # Gin Port (Gin will auto-config PORT env for svc)
 EXPOSE 3000
 
