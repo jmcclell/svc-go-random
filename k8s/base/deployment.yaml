@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    spec:
+      containers:
+      - name: random
+        image: 920858517028.dkr.ecr.us-east-1.amazonaws.com/random
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8000
+        - name: admin
+          containerPort: 9000

@@ -1,0 +1,19 @@
+apiVersion: skaffold/v1beta11
+kind: Config
+build:
+  artifacts:
+  - image: 920858517028.dkr.ecr.us-east-1.amazonaws.com/random
+profiles:
+- name: dev
+  deploy:
+    kustomize:
+      path: './k8s/overlays/development/'
+- name: test
+  test:
+    - image: 920858517028.dkr.ecr.us-east-1.amazonaws.com/random
+      structureTests:
+      - './k8s/structure-tests/*'
+- name: prod
+  deploy:
+    kustomize:
+      path: './k8s/overlays/production/'

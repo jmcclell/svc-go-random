@@ -1,0 +1,11 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random
+spec:
+  template:
+    spec:
+      containers:
+      - name: random
+        imagePullPolicy: IfNotPresent
