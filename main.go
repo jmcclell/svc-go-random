@@ -27,9 +27,9 @@ var serverStatus = Starting
 var version = "dev"
 
 type Config struct {
-	Port                    int16         `default:"80"`
-	AdminPort               int16         `default:"9000"`
-	GracefulShutdownTimeout time.Duration `default:"30s"`
+	Port                    int16         `split_words:"true" default:"80"`
+	AdminPort               int16         `split_words:"true" default:"9000"`
+	GracefulShutdownTimeout time.Duration `split_words:"true" default:"30s"`
 }
 
 func main() {
