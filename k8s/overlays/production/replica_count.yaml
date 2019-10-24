@@ -4,4 +4,4 @@ kind: Deployment
 metadata:
   name: random
 spec:
-  replicas: 6
+  replicas: 3

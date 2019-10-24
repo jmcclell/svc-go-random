@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: random
-        image: 920858517028.dkr.ecr.us-east-1.amazonaws.com/random
+        image: jmcclell/svc-go-random
         imagePullPolicy: Always
         ports:
         - name: http

@@ -9,14 +9,3 @@ spec:
     - port: 80
       targetPort: http
       protocol: TCP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: random-admin
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: admin
-      protocol: TCP
